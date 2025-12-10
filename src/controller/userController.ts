@@ -1,7 +1,8 @@
 import { db } from "@/db/db";
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
-import { stat } from "fs";
+import { error } from "console";
+
 
 
 
@@ -74,6 +75,10 @@ export async function createUser(req:Request, res:Response) {
      });
     } catch (error) {
         console.log(error)
+        res.status(500).json({
+            error: 'Something went wrong',
+            data: null
+        })
     }
 }
 
@@ -84,11 +89,20 @@ export async function AllUser(req:Request, res:Response){
                 createdAt: "desc"
             }
         })
-        res.status(200).json({status: "success", data:{
-            AllUser
-        }})
+        const filterPassword = AllUser.map((user)=>{
+            const {password, ...others} = user;
+            return others;
+        })
+        res.status(200).json({status: "success", data:
+            filterPassword,
+            error: null,
+        })
     } catch (error) {
         console.log(error)
+        res.status(500).json({
+            error: 'Something went wrong',
+            data: null
+        })
     }
 }
 
@@ -100,10 +114,13 @@ export async function DetailUser(req:Request, res:Response){
                 id
             }
         })
-        res.status(200).json({status:"success", data:{
-            userDetail
-        }})
+       const {password, ...others} = userDetail;
+        res.status(200).json({status:"success", data: others, error:null})
     } catch (error) {
         console.log(error)
+        res.status(500).json({
+            error: 'Something went wrong',
+            data: null
+        })
     }
 }
