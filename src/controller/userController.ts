@@ -4,10 +4,8 @@ import bcrypt from 'bcrypt'
 import { error } from "console";
 
 
-
-
 export async function createUser(req:Request, res:Response) {
-    const {email, username, password, firstName, lastName, phone, dob, gender, image } = req.body;
+    const {email, username, password, firstName, lastName, phone, dob, gender, role, image } = req.body;
 
     try {
         const existingUserByEmail = await db.user.findUnique({
@@ -64,6 +62,7 @@ export async function createUser(req:Request, res:Response) {
                phone, 
                dob, 
                gender, 
+               role,
                image: image ? image : "https://utfs.io/f/c61ec63c-42b1-4939-a7fb-ed04d43e23ee-2558r.png"
             }
         })
@@ -93,7 +92,7 @@ export async function AllUser(req:Request, res:Response){
             const {password, ...others} = user;
             return others;
         })
-        res.status(200).json({status: "success", data:
+        res.status(200).json({status: "success", count:filterPassword.length, data:
             filterPassword,
             error: null,
         })
@@ -114,6 +113,12 @@ export async function DetailUser(req:Request, res:Response){
                 id
             }
         })
+        if(!userDetail){
+           return res.status(404).json({
+                data:null,
+                error:'User Not found'
+            })
+        }
        const {password, ...others} = userDetail;
         res.status(200).json({status:"success", data: others, error:null})
     } catch (error) {
@@ -123,4 +128,113 @@ export async function DetailUser(req:Request, res:Response){
             data: null
         })
     }
+}
+
+export async function UpdateUser(req:Request, res:Response){
+    const {id} = req.params;
+    const {email, username,firstName, lastName, phone, dob, gender, image } = req.body;
+
+    try {
+         const userDetail = await db.user.findUnique({
+            where: {
+                id
+            }
+        })
+        if(!userDetail){
+           return res.status(404).json({
+                data:null,
+                error:'User Not found'
+            })
+        }
+        const updateUser = await db.user.update({
+            where:{id},
+            data:{
+                email,
+                username,
+                firstName,
+                lastName, 
+                phone, 
+                dob, 
+                gender, 
+                image,  
+            }
+        })
+        const {password, ...others} = updateUser;
+        res.status(200).json({
+            data: others,
+            error:null
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error:"Something went wrong"})
+    }
+}
+
+export async function UpdateUserPassword(req:Request, res:Response){
+    const {id} = req.params;
+    const {password} = req.body;
+
+    try {
+         const userDetail = await db.user.findUnique({
+            where: {
+                id
+            }
+        })
+        if(!userDetail){
+           return res.status(404).json({
+                data:null,
+                error:'User Not found'
+            })
+        }
+        //hashed user Password
+        const hashPassword:string = await bcrypt.hash(password, 12);
+        const updateUser = await db.user.update({
+            where:{id},
+            data:{
+                password:hashPassword
+            }
+        })
+        const {password:savePassword, ...others} = updateUser;
+        res.status(200).json({
+            data: others,
+            error:null
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({error:"Something went wrong"})
+    }
+}
+
+export async function DeleteUser(req:Request, res:Response){
+    const {id} = req.params;
+    try {
+        const user = await db.user.findUnique({
+            where:{
+                id
+            }
+        })
+
+        if(!user){
+            return res.status(404).json({
+                error: "User Not found with this id"
+            })
+        }
+        
+        await db.user.delete({
+            where:{
+                id
+            }
+        })
+        res.status(200).json({
+            status: "success",
+            data: null,
+            
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error:"Something went wrong"
+        })
+    }
+
 }
