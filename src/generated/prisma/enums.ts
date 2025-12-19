@@ -9,6 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
+export const CustomerType = {
+  RETAIL: 'RETAIL',
+  WHOLESALE: 'WHOLESALE',
+  DISTRIBUTOR: 'DISTRIBUTOR',
+  OTHER: 'OTHER'
+} as const
+
+export type CustomerType = (typeof CustomerType)[keyof typeof CustomerType]
+
+
 export const Gender = {
   MALE: 'MALE',
   FEMALE: 'FEMALE'
@@ -23,3 +33,14 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const SupplierType = {
+  MANUFACTURER: 'MANUFACTURER',
+  DISTRIBUTOR: 'DISTRIBUTOR',
+  WHOLESALE: 'WHOLESALE',
+  RETAILER: 'RETAILER',
+  OTHER: 'OTHER'
+} as const
+
+export type SupplierType = (typeof SupplierType)[keyof typeof SupplierType]

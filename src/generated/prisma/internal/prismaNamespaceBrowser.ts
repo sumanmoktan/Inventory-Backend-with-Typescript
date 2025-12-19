@@ -51,7 +51,12 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   Customer: 'Customer',
   User: 'User',
-  Shop: 'Shop'
+  Shop: 'Shop',
+  Supplier: 'Supplier',
+  Unit: 'Unit',
+  Brand: 'Brand',
+  Category: 'Category',
+  Product: 'Product'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -62,9 +67,19 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
 export const CustomerScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  email: 'email',
+  customerType: 'customerType',
+  firstName: 'firstName',
+  lastName: 'lastName',
   phone: 'phone',
+  gender: 'gender',
+  country: 'country',
+  location: 'location',
+  maxCreditLimit: 'maxCreditLimit',
+  maxCreditDays: 'maxCreditDays',
+  taxPin: 'taxPin',
+  dob: 'dob',
+  email: 'email',
+  nationalID: 'nationalID',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -94,6 +109,7 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 export const ShopScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  slug: 'slug',
   location: 'location',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -102,6 +118,92 @@ export const ShopScalarFieldEnum = {
 } as const
 
 export type ShopScalarFieldEnum = (typeof ShopScalarFieldEnum)[keyof typeof ShopScalarFieldEnum]
+
+
+export const SupplierScalarFieldEnum = {
+  id: 'id',
+  supplierType: 'supplierType',
+  name: 'name',
+  contactPerson: 'contactPerson',
+  phone: 'phone',
+  email: 'email',
+  location: 'location',
+  country: 'country',
+  website: 'website',
+  taxPin: 'taxPin',
+  registrationNumber: 'registrationNumber',
+  bankAccountNumber: 'bankAccountNumber',
+  bankName: 'bankName',
+  paymentTerms: 'paymentTerms',
+  logo: 'logo',
+  rating: 'rating',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupplierScalarFieldEnum = (typeof SupplierScalarFieldEnum)[keyof typeof SupplierScalarFieldEnum]
+
+
+export const UnitScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  abbreviation: 'abbreviation',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UnitScalarFieldEnum = (typeof UnitScalarFieldEnum)[keyof typeof UnitScalarFieldEnum]
+
+
+export const BrandScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof BrandScalarFieldEnum]
+
+
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  batchNumber: 'batchNumber',
+  barCode: 'barCode',
+  image: 'image',
+  tax: 'tax',
+  alertQty: 'alertQty',
+  stockQty: 'stockQty',
+  price: 'price',
+  buyingPrice: 'buyingPrice',
+  sku: 'sku',
+  productCode: 'productCode',
+  slug: 'slug',
+  supplierId: 'supplierId',
+  unitId: 'unitId',
+  brandId: 'brandId',
+  categroyId: 'categroyId',
+  expiryDate: 'expiryDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
 
 
 export const SortOrder = {

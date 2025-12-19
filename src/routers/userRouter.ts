@@ -1,5 +1,5 @@
 import express from 'express';
-import { AllUser, createUser, DeleteUser, DetailUser, UpdateUser, UpdateUserPassword } from '@/controller/userController';
+import { AllUser, createUser, DeleteUser, DetailUser, GetAttendants, UpdateUser, UpdateUserPassword } from '@/controller/userController';
 
 const router = express.Router();
 
@@ -7,6 +7,8 @@ const router = express.Router();
 router.post("/createUser", createUser);
 //finding all user which are register 
 router.get("/user", AllUser);
+//find the user which role = attendants
+router.get("/attendants", GetAttendants);
 //find details of user
 router.get("/detailUser/:id", DetailUser);
 //update user detail 

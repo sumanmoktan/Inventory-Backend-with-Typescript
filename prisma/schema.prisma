@@ -15,11 +15,33 @@ datasource db {
 
 model Customer {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
+  customerType  CustomerType 
+  firstName     String
+  lastName      String
+  phone         String @unique
+  gender        Gender
+  country       String
+  location      String
+  maxCreditLimit Float
+  maxCreditDays Int 
+  taxPin        String?
+  dob           DateTime?
   email         String?   @unique
-  phone         String
+  nationalID    String    @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+}
+
+enum CustomerType {
+  RETAIL
+  WHOLESALE
+  DISTRIBUTOR
+  OTHER
+}
+
+enum Gender {
+  MALE
+  FEMALE
 }
 
 model User {
@@ -39,11 +61,6 @@ model User {
   shops         Shop[]    //Relation to shops managed by the user
 }
 
-enum Gender {
-  MALE
-  FEMALE
-}
-
 enum Role {
   ADMIN
   ATTENDANT
@@ -52,6 +69,7 @@ enum Role {
 model Shop {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name          String
+  slug  String @unique
   location      String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -60,3 +78,91 @@ model Shop {
   attendantIds  String[]  @db.ObjectId  //Array of ObjectIds referencing attendants
  
 }
+
+model Supplier {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  supplierType      SupplierType
+  name              String
+  contactPerson     String
+  phone             String    @unique
+  email             String?    @unique
+  location          String
+  country           String
+  website           String?
+  taxPin            String?
+  registrationNumber String?  @unique
+  bankAccountNumber   String?
+  bankName          String?
+  paymentTerms      String?
+  logo              String?   @default("https://example.com/default-logo.png")
+  rating            Float?
+  notes             String?
+  products          Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum SupplierType {
+  MANUFACTURER
+  DISTRIBUTOR
+  WHOLESALE
+  RETAILER
+  OTHER
+}
+
+model Unit {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  abbreviation  String
+  slug          String  @unique
+  products      Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Brand {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  slug       String   @unique
+  products   Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Category{
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String    @unique
+  products    Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  batchNumber String?
+  barCode     String?  @unique
+  image       String?
+  tax         Int?
+  alertQty    Int
+  stockQty    Int
+  price       Int
+  buyingPrice Int?
+  sku         String  @unique
+  productCode String  @unique
+  slug        String  @unique
+  supplierId  String  @db.ObjectId
+  unitId      String  @db.ObjectId
+  brandId     String  @db.ObjectId
+  categroyId  String  @db.ObjectId
+  expiryDate  DateTime
+  unit        Unit    @relation(fields:[unitId], references:[id])
+  brand       Brand   @relation(fields:[brandId], references:[id])
+  category    Category @relation(fields:[categroyId], references:[id])
+  supplier    Supplier  @relation(fields:[supplierId], references:[id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+

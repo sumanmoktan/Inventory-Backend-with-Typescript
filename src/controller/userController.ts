@@ -1,7 +1,6 @@
 import { db } from "@/db/db";
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt'
-import { error } from "console";
 
 
 export async function createUser(req:Request, res:Response) {
@@ -105,6 +104,33 @@ export async function AllUser(req:Request, res:Response){
     }
 }
 
+export async function GetAttendants(req:Request, res:Response){
+    try {
+        const AllUser = await db.user.findMany({
+            orderBy: {
+                createdAt: "desc"
+            },
+            where:{
+                role: "ATTENDANT"
+            }
+        })
+        const filterPassword = AllUser.map((user)=>{
+            const {password, ...others} = user;
+            return others;
+        })
+        res.status(200).json({status: "success", count:filterPassword.length, data:
+            filterPassword,
+            error: null,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            error: 'Something went wrong',
+            data: null
+        })
+    }
+}
+
 export async function DetailUser(req:Request, res:Response){
     const {id} = req.params;
     try {
@@ -132,25 +158,82 @@ export async function DetailUser(req:Request, res:Response){
 
 export async function UpdateUser(req:Request, res:Response){
     const {id} = req.params;
-    const {email, username,firstName, lastName, phone, dob, gender, image } = req.body;
+    const {email, username,firstName, lastName, phone, password, dob, gender, image} = req.body;
 
     try {
-         const userDetail = await db.user.findUnique({
+        //find the user with id
+         const existingUser = await db.user.findUnique({
             where: {
                 id
             }
         })
-        if(!userDetail){
+        //if user doesnot exist then it must return a error with message like not found
+        if(!existingUser){
            return res.status(404).json({
                 data:null,
                 error:'User Not found'
             })
         }
+        //if email, username, phone are unique
+        if(email && email !== existingUser.email){
+            const existingUserByEmail = await db.user.findUnique({
+            where:{
+                email
+            }
+        })
+
+        if(existingUserByEmail){
+            res.status(409).json({
+                error:`Email ${email} Already Taken`,
+                data:null
+            })
+            return
+        }
+        }
+
+        if(phone && phone !== existingUser.phone){
+             const existingUserByPhone = await db.user.findUnique({
+            where:{
+                phone
+            }
+        });
+
+        if(existingUserByPhone){
+            res.status(409).json({
+                error:`Phone Number ${phone} Already Used`,
+                data:null
+            })
+            return
+          }
+        }
+
+        if(username && username !== existingUser.username){
+           const existUserByUsername = await db.user.findUnique({
+            where:{
+                username
+            }
+        })
+
+        if(existUserByUsername){
+            res.status(409).json({
+                error:`UserName ${username} is taken already `
+            })
+            return
+        } 
+        }
+
+        //hash the password if passowrd is exist
+        let hashedPassword = existingUser.password;
+        if(password){
+            hashedPassword = await bcrypt.hash(password, 12)
+        }
+        //Update user
         const updateUser = await db.user.update({
             where:{id},
             data:{
                 email,
                 username,
+                password:hashedPassword,
                 firstName,
                 lastName, 
                 phone, 
@@ -159,7 +242,7 @@ export async function UpdateUser(req:Request, res:Response){
                 image,  
             }
         })
-        const {password, ...others} = updateUser;
+        const {password:userPass, ...others} = updateUser;
         res.status(200).json({
             data: others,
             error:null
