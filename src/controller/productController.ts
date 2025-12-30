@@ -1,5 +1,4 @@
 import { db } from "@/db/db";
-import { error } from "console";
 import { Request, Response } from "express";
 
 export async function createProduct(req:Request, res:Response){
@@ -110,7 +109,7 @@ export async function createProduct(req:Request, res:Response){
 export async function GetAllProudct(req:Request, res:Response){
     try {
         const proudct = await db.product.findMany({
-            where:{
+            orderBy:{
                 createdAt:"desc"
             }
         })
@@ -297,7 +296,7 @@ export async function DeleteProduct(req:Request, res:Response){
             });
         }
 
-        const deleteProduct = await db.product.findUnique({
+        await db.product.delete({
             where:{
                 id
             }

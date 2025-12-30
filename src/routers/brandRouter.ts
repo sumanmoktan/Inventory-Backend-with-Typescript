@@ -4,8 +4,8 @@ import express from 'express';
 const router = express.Router();
 
 router.post('/createBrand', createBrand);
-router.get("/brand", GetBrand);
-router.get("/brand/:id", DetailBrand);
+router.get("/getBrand", GetBrand);
+router.get("/singleBrand/:id", DetailBrand);
 router.put("/updateBrand/:id", updateBrand);
 router.delete("/delete/:id", deleteBrand);
 

@@ -310,7 +310,7 @@ export type ProductGroupByOutputType = {
   unitId: string
   brandId: string
   categroyId: string
-  expiryDate: Date
+  expiryDate: Date | null
   createdAt: Date
   updatedAt: Date
   _count: ProductCountAggregateOutputType | null
@@ -357,7 +357,7 @@ export type ProductWhereInput = {
   unitId?: Prisma.StringFilter<"Product"> | string
   brandId?: Prisma.StringFilter<"Product"> | string
   categroyId?: Prisma.StringFilter<"Product"> | string
-  expiryDate?: Prisma.DateTimeFilter<"Product"> | Date | string
+  expiryDate?: Prisma.DateTimeNullableFilter<"Product"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   unit?: Prisma.XOR<Prisma.UnitScalarRelationFilter, Prisma.UnitWhereInput>
@@ -416,7 +416,7 @@ export type ProductWhereUniqueInput = Prisma.AtLeast<{
   unitId?: Prisma.StringFilter<"Product"> | string
   brandId?: Prisma.StringFilter<"Product"> | string
   categroyId?: Prisma.StringFilter<"Product"> | string
-  expiryDate?: Prisma.DateTimeFilter<"Product"> | Date | string
+  expiryDate?: Prisma.DateTimeNullableFilter<"Product"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   unit?: Prisma.XOR<Prisma.UnitScalarRelationFilter, Prisma.UnitWhereInput>
@@ -476,7 +476,7 @@ export type ProductScalarWhereWithAggregatesInput = {
   unitId?: Prisma.StringWithAggregatesFilter<"Product"> | string
   brandId?: Prisma.StringWithAggregatesFilter<"Product"> | string
   categroyId?: Prisma.StringWithAggregatesFilter<"Product"> | string
-  expiryDate?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
+  expiryDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Product"> | Date | string
 }
@@ -496,7 +496,7 @@ export type ProductCreateInput = {
   sku: string
   productCode: string
   slug: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   unit: Prisma.UnitCreateNestedOneWithoutProductsInput
@@ -524,7 +524,7 @@ export type ProductUncheckedCreateInput = {
   unitId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -543,7 +543,7 @@ export type ProductUpdateInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unit?: Prisma.UnitUpdateOneRequiredWithoutProductsNestedInput
@@ -570,7 +570,7 @@ export type ProductUncheckedUpdateInput = {
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -594,7 +594,7 @@ export type ProductCreateManyInput = {
   unitId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -613,7 +613,7 @@ export type ProductUpdateManyMutationInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -636,7 +636,7 @@ export type ProductUncheckedUpdateManyInput = {
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -931,7 +931,7 @@ export type ProductCreateWithoutSupplierInput = {
   sku: string
   productCode: string
   slug: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   unit: Prisma.UnitCreateNestedOneWithoutProductsInput
@@ -957,7 +957,7 @@ export type ProductUncheckedCreateWithoutSupplierInput = {
   unitId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1009,7 +1009,7 @@ export type ProductScalarWhereInput = {
   unitId?: Prisma.StringFilter<"Product"> | string
   brandId?: Prisma.StringFilter<"Product"> | string
   categroyId?: Prisma.StringFilter<"Product"> | string
-  expiryDate?: Prisma.DateTimeFilter<"Product"> | Date | string
+  expiryDate?: Prisma.DateTimeNullableFilter<"Product"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
 }
@@ -1029,7 +1029,7 @@ export type ProductCreateWithoutUnitInput = {
   sku: string
   productCode: string
   slug: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   brand: Prisma.BrandCreateNestedOneWithoutProductsInput
@@ -1055,7 +1055,7 @@ export type ProductUncheckedCreateWithoutUnitInput = {
   supplierId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1100,7 +1100,7 @@ export type ProductCreateWithoutBrandInput = {
   sku: string
   productCode: string
   slug: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   unit: Prisma.UnitCreateNestedOneWithoutProductsInput
@@ -1126,7 +1126,7 @@ export type ProductUncheckedCreateWithoutBrandInput = {
   supplierId: string
   unitId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1171,7 +1171,7 @@ export type ProductCreateWithoutCategoryInput = {
   sku: string
   productCode: string
   slug: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   unit: Prisma.UnitCreateNestedOneWithoutProductsInput
@@ -1197,7 +1197,7 @@ export type ProductUncheckedCreateWithoutCategoryInput = {
   supplierId: string
   unitId: string
   brandId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1245,7 +1245,7 @@ export type ProductCreateManySupplierInput = {
   unitId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1264,7 +1264,7 @@ export type ProductUpdateWithoutSupplierInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unit?: Prisma.UnitUpdateOneRequiredWithoutProductsNestedInput
@@ -1289,7 +1289,7 @@ export type ProductUncheckedUpdateWithoutSupplierInput = {
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1311,7 +1311,7 @@ export type ProductUncheckedUpdateManyWithoutSupplierInput = {
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1334,7 +1334,7 @@ export type ProductCreateManyUnitInput = {
   supplierId: string
   brandId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1353,7 +1353,7 @@ export type ProductUpdateWithoutUnitInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   brand?: Prisma.BrandUpdateOneRequiredWithoutProductsNestedInput
@@ -1378,7 +1378,7 @@ export type ProductUncheckedUpdateWithoutUnitInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1400,7 +1400,7 @@ export type ProductUncheckedUpdateManyWithoutUnitInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1423,7 +1423,7 @@ export type ProductCreateManyBrandInput = {
   supplierId: string
   unitId: string
   categroyId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1442,7 +1442,7 @@ export type ProductUpdateWithoutBrandInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unit?: Prisma.UnitUpdateOneRequiredWithoutProductsNestedInput
@@ -1467,7 +1467,7 @@ export type ProductUncheckedUpdateWithoutBrandInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1489,7 +1489,7 @@ export type ProductUncheckedUpdateManyWithoutBrandInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   categroyId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1512,7 +1512,7 @@ export type ProductCreateManyCategoryInput = {
   supplierId: string
   unitId: string
   brandId: string
-  expiryDate: Date | string
+  expiryDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1531,7 +1531,7 @@ export type ProductUpdateWithoutCategoryInput = {
   sku?: Prisma.StringFieldUpdateOperationsInput | string
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unit?: Prisma.UnitUpdateOneRequiredWithoutProductsNestedInput
@@ -1556,7 +1556,7 @@ export type ProductUncheckedUpdateWithoutCategoryInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1578,7 +1578,7 @@ export type ProductUncheckedUpdateManyWithoutCategoryInput = {
   supplierId?: Prisma.StringFieldUpdateOperationsInput | string
   unitId?: Prisma.StringFieldUpdateOperationsInput | string
   brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  expiryDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  expiryDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1674,7 +1674,7 @@ export type $ProductPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     unitId: string
     brandId: string
     categroyId: string
-    expiryDate: Date
+    expiryDate: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["product"]>

@@ -138,7 +138,7 @@ export async function updateBrand(req:Request, res:Response){
 export async function deleteBrand(req:Request, res:Response){
     try {
         const {id} = req.params;
-        const Brand = await db.brand.findUnique({
+        const Brand = await db.brand.delete({
             where:{
                 id
             }

@@ -144,7 +144,7 @@ model Product {
   description String?
   batchNumber String?
   barCode     String?  @unique
-  image       String?
+  image       String?  @default("https://example.com/default-logo.png")
   tax         Int?
   alertQty    Int
   stockQty    Int
@@ -157,7 +157,7 @@ model Product {
   unitId      String  @db.ObjectId
   brandId     String  @db.ObjectId
   categroyId  String  @db.ObjectId
-  expiryDate  DateTime
+  expiryDate  DateTime? @default("2025-12-31T23:59:59Z")
   unit        Unit    @relation(fields:[unitId], references:[id])
   brand       Brand   @relation(fields:[brandId], references:[id])
   category    Category @relation(fields:[categroyId], references:[id])

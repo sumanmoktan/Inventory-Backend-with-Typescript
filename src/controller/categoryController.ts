@@ -138,7 +138,7 @@ export async function updateCategory(req:Request, res:Response){
 export async function deleteCategory(req:Request, res:Response){
     try {
         const {id} = req.params;
-        const Category = await db.category.findUnique({
+        const Category = await db.category.delete({
             where:{
                 id
             }
