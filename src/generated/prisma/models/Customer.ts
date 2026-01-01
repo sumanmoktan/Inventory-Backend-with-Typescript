@@ -29,11 +29,13 @@ export type AggregateCustomer = {
 export type CustomerAvgAggregateOutputType = {
   maxCreditLimit: number | null
   maxCreditDays: number | null
+  unpaidCreditAmount: number | null
 }
 
 export type CustomerSumAggregateOutputType = {
   maxCreditLimit: number | null
   maxCreditDays: number | null
+  unpaidCreditAmount: number | null
 }
 
 export type CustomerMinAggregateOutputType = {
@@ -47,6 +49,7 @@ export type CustomerMinAggregateOutputType = {
   location: string | null
   maxCreditLimit: number | null
   maxCreditDays: number | null
+  unpaidCreditAmount: number | null
   taxPin: string | null
   dob: Date | null
   email: string | null
@@ -66,6 +69,7 @@ export type CustomerMaxAggregateOutputType = {
   location: string | null
   maxCreditLimit: number | null
   maxCreditDays: number | null
+  unpaidCreditAmount: number | null
   taxPin: string | null
   dob: Date | null
   email: string | null
@@ -85,6 +89,7 @@ export type CustomerCountAggregateOutputType = {
   location: number
   maxCreditLimit: number
   maxCreditDays: number
+  unpaidCreditAmount: number
   taxPin: number
   dob: number
   email: number
@@ -98,11 +103,13 @@ export type CustomerCountAggregateOutputType = {
 export type CustomerAvgAggregateInputType = {
   maxCreditLimit?: true
   maxCreditDays?: true
+  unpaidCreditAmount?: true
 }
 
 export type CustomerSumAggregateInputType = {
   maxCreditLimit?: true
   maxCreditDays?: true
+  unpaidCreditAmount?: true
 }
 
 export type CustomerMinAggregateInputType = {
@@ -116,6 +123,7 @@ export type CustomerMinAggregateInputType = {
   location?: true
   maxCreditLimit?: true
   maxCreditDays?: true
+  unpaidCreditAmount?: true
   taxPin?: true
   dob?: true
   email?: true
@@ -135,6 +143,7 @@ export type CustomerMaxAggregateInputType = {
   location?: true
   maxCreditLimit?: true
   maxCreditDays?: true
+  unpaidCreditAmount?: true
   taxPin?: true
   dob?: true
   email?: true
@@ -154,6 +163,7 @@ export type CustomerCountAggregateInputType = {
   location?: true
   maxCreditLimit?: true
   maxCreditDays?: true
+  unpaidCreditAmount?: true
   taxPin?: true
   dob?: true
   email?: true
@@ -260,6 +270,7 @@ export type CustomerGroupByOutputType = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
+  unpaidCreditAmount: number | null
   taxPin: string | null
   dob: Date | null
   email: string | null
@@ -302,12 +313,14 @@ export type CustomerWhereInput = {
   location?: Prisma.StringFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntFilter<"Customer"> | number
+  unpaidCreditAmount?: Prisma.IntNullableFilter<"Customer"> | number | null
   taxPin?: Prisma.StringNullableFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
   email?: Prisma.StringNullableFilter<"Customer"> | string | null
   nationalID?: Prisma.StringFilter<"Customer"> | string
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
+  sales?: Prisma.SaleListRelationFilter
 }
 
 export type CustomerOrderByWithRelationInput = {
@@ -321,12 +334,14 @@ export type CustomerOrderByWithRelationInput = {
   location?: Prisma.SortOrder
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
   taxPin?: Prisma.SortOrder
   dob?: Prisma.SortOrder
   email?: Prisma.SortOrder
   nationalID?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  sales?: Prisma.SaleOrderByRelationAggregateInput
 }
 
 export type CustomerWhereUniqueInput = Prisma.AtLeast<{
@@ -345,10 +360,12 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   location?: Prisma.StringFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntFilter<"Customer"> | number
+  unpaidCreditAmount?: Prisma.IntNullableFilter<"Customer"> | number | null
   taxPin?: Prisma.StringNullableFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
+  sales?: Prisma.SaleListRelationFilter
 }, "id" | "phone" | "email" | "nationalID">
 
 export type CustomerOrderByWithAggregationInput = {
@@ -362,6 +379,7 @@ export type CustomerOrderByWithAggregationInput = {
   location?: Prisma.SortOrder
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
   taxPin?: Prisma.SortOrder
   dob?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -389,6 +407,7 @@ export type CustomerScalarWhereWithAggregatesInput = {
   location?: Prisma.StringWithAggregatesFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatWithAggregatesFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntWithAggregatesFilter<"Customer"> | number
+  unpaidCreditAmount?: Prisma.IntNullableWithAggregatesFilter<"Customer"> | number | null
   taxPin?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableWithAggregatesFilter<"Customer"> | Date | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
@@ -408,12 +427,14 @@ export type CustomerCreateInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
+  unpaidCreditAmount?: number | null
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
   nationalID: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sales?: Prisma.SaleCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUncheckedCreateInput = {
@@ -427,12 +448,14 @@ export type CustomerUncheckedCreateInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
+  unpaidCreditAmount?: number | null
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
   nationalID: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerUpdateInput = {
@@ -445,12 +468,14 @@ export type CustomerUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nationalID?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sales?: Prisma.SaleUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerUncheckedUpdateInput = {
@@ -463,12 +488,14 @@ export type CustomerUncheckedUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nationalID?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerCreateManyInput = {
@@ -482,6 +509,7 @@ export type CustomerCreateManyInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
+  unpaidCreditAmount?: number | null
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -500,6 +528,7 @@ export type CustomerUpdateManyMutationInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -518,6 +547,7 @@ export type CustomerUncheckedUpdateManyInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -537,6 +567,7 @@ export type CustomerCountOrderByAggregateInput = {
   location?: Prisma.SortOrder
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
   taxPin?: Prisma.SortOrder
   dob?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -548,6 +579,7 @@ export type CustomerCountOrderByAggregateInput = {
 export type CustomerAvgOrderByAggregateInput = {
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
 }
 
 export type CustomerMaxOrderByAggregateInput = {
@@ -561,6 +593,7 @@ export type CustomerMaxOrderByAggregateInput = {
   location?: Prisma.SortOrder
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
   taxPin?: Prisma.SortOrder
   dob?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -580,6 +613,7 @@ export type CustomerMinOrderByAggregateInput = {
   location?: Prisma.SortOrder
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
   taxPin?: Prisma.SortOrder
   dob?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -591,6 +625,12 @@ export type CustomerMinOrderByAggregateInput = {
 export type CustomerSumOrderByAggregateInput = {
   maxCreditLimit?: Prisma.SortOrder
   maxCreditDays?: Prisma.SortOrder
+  unpaidCreditAmount?: Prisma.SortOrder
+}
+
+export type CustomerScalarRelationFilter = {
+  is?: Prisma.CustomerWhereInput
+  isNot?: Prisma.CustomerWhereInput
 }
 
 export type EnumCustomerTypeFieldUpdateOperationsInput = {
@@ -621,6 +661,15 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+  unset?: boolean
+}
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
   unset?: boolean
@@ -635,6 +684,143 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type CustomerCreateNestedOneWithoutSalesInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutSalesInput, Prisma.CustomerUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutSalesInput
+  connect?: Prisma.CustomerWhereUniqueInput
+}
+
+export type CustomerUpdateOneRequiredWithoutSalesNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerCreateWithoutSalesInput, Prisma.CustomerUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.CustomerCreateOrConnectWithoutSalesInput
+  upsert?: Prisma.CustomerUpsertWithoutSalesInput
+  connect?: Prisma.CustomerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerUpdateToOneWithWhereWithoutSalesInput, Prisma.CustomerUpdateWithoutSalesInput>, Prisma.CustomerUncheckedUpdateWithoutSalesInput>
+}
+
+export type CustomerCreateWithoutSalesInput = {
+  id?: string
+  customerType: $Enums.CustomerType
+  firstName: string
+  lastName: string
+  phone: string
+  gender: $Enums.Gender
+  country: string
+  location: string
+  maxCreditLimit: number
+  maxCreditDays: number
+  unpaidCreditAmount?: number | null
+  taxPin?: string | null
+  dob?: Date | string | null
+  email?: string | null
+  nationalID: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CustomerUncheckedCreateWithoutSalesInput = {
+  id?: string
+  customerType: $Enums.CustomerType
+  firstName: string
+  lastName: string
+  phone: string
+  gender: $Enums.Gender
+  country: string
+  location: string
+  maxCreditLimit: number
+  maxCreditDays: number
+  unpaidCreditAmount?: number | null
+  taxPin?: string | null
+  dob?: Date | string | null
+  email?: string | null
+  nationalID: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CustomerCreateOrConnectWithoutSalesInput = {
+  where: Prisma.CustomerWhereUniqueInput
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutSalesInput, Prisma.CustomerUncheckedCreateWithoutSalesInput>
+}
+
+export type CustomerUpsertWithoutSalesInput = {
+  update: Prisma.XOR<Prisma.CustomerUpdateWithoutSalesInput, Prisma.CustomerUncheckedUpdateWithoutSalesInput>
+  create: Prisma.XOR<Prisma.CustomerCreateWithoutSalesInput, Prisma.CustomerUncheckedCreateWithoutSalesInput>
+  where?: Prisma.CustomerWhereInput
+}
+
+export type CustomerUpdateToOneWithWhereWithoutSalesInput = {
+  where?: Prisma.CustomerWhereInput
+  data: Prisma.XOR<Prisma.CustomerUpdateWithoutSalesInput, Prisma.CustomerUncheckedUpdateWithoutSalesInput>
+}
+
+export type CustomerUpdateWithoutSalesInput = {
+  customerType?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
+  maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nationalID?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type CustomerUncheckedUpdateWithoutSalesInput = {
+  customerType?: Prisma.EnumCustomerTypeFieldUpdateOperationsInput | $Enums.CustomerType
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.EnumGenderFieldUpdateOperationsInput | $Enums.Gender
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
+  maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
+  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nationalID?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type CustomerCountOutputType
+ */
+
+export type CustomerCountOutputType = {
+  sales: number
+}
+
+export type CustomerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  sales?: boolean | CustomerCountOutputTypeCountSalesArgs
+}
+
+/**
+ * CustomerCountOutputType without action
+ */
+export type CustomerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CustomerCountOutputType
+   */
+  select?: Prisma.CustomerCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CustomerCountOutputType without action
+ */
+export type CustomerCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleWhereInput
+}
 
 
 export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -648,12 +834,15 @@ export type CustomerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   location?: boolean
   maxCreditLimit?: boolean
   maxCreditDays?: boolean
+  unpaidCreditAmount?: boolean
   taxPin?: boolean
   dob?: boolean
   email?: boolean
   nationalID?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
+  _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customer"]>
 
 
@@ -669,6 +858,7 @@ export type CustomerSelectScalar = {
   location?: boolean
   maxCreditLimit?: boolean
   maxCreditDays?: boolean
+  unpaidCreditAmount?: boolean
   taxPin?: boolean
   dob?: boolean
   email?: boolean
@@ -677,11 +867,17 @@ export type CustomerSelectScalar = {
   updatedAt?: boolean
 }
 
-export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerType" | "firstName" | "lastName" | "phone" | "gender" | "country" | "location" | "maxCreditLimit" | "maxCreditDays" | "taxPin" | "dob" | "email" | "nationalID" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
+export type CustomerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerType" | "firstName" | "lastName" | "phone" | "gender" | "country" | "location" | "maxCreditLimit" | "maxCreditDays" | "unpaidCreditAmount" | "taxPin" | "dob" | "email" | "nationalID" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
+export type CustomerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  sales?: boolean | Prisma.Customer$salesArgs<ExtArgs>
+  _count?: boolean | Prisma.CustomerCountOutputTypeDefaultArgs<ExtArgs>
+}
 
 export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Customer"
-  objects: {}
+  objects: {
+    sales: Prisma.$SalePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     customerType: $Enums.CustomerType
@@ -693,6 +889,7 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     location: string
     maxCreditLimit: number
     maxCreditDays: number
+    unpaidCreditAmount: number | null
     taxPin: string | null
     dob: Date | null
     email: string | null
@@ -1062,6 +1259,7 @@ readonly fields: CustomerFieldRefs;
  */
 export interface Prisma__CustomerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  sales<T extends Prisma.Customer$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Customer$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1101,6 +1299,7 @@ export interface CustomerFieldRefs {
   readonly location: Prisma.FieldRef<"Customer", 'String'>
   readonly maxCreditLimit: Prisma.FieldRef<"Customer", 'Float'>
   readonly maxCreditDays: Prisma.FieldRef<"Customer", 'Int'>
+  readonly unpaidCreditAmount: Prisma.FieldRef<"Customer", 'Int'>
   readonly taxPin: Prisma.FieldRef<"Customer", 'String'>
   readonly dob: Prisma.FieldRef<"Customer", 'DateTime'>
   readonly email: Prisma.FieldRef<"Customer", 'String'>
@@ -1124,6 +1323,10 @@ export type CustomerFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * Filter, which Customer to fetch.
    */
   where: Prisma.CustomerWhereUniqueInput
@@ -1142,6 +1345,10 @@ export type CustomerFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * Filter, which Customer to fetch.
    */
   where: Prisma.CustomerWhereUniqueInput
@@ -1159,6 +1366,10 @@ export type CustomerFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Customer
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
   /**
    * Filter, which Customer to fetch.
    */
@@ -1208,6 +1419,10 @@ export type CustomerFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * Filter, which Customer to fetch.
    */
   where?: Prisma.CustomerWhereInput
@@ -1256,6 +1471,10 @@ export type CustomerFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * Filter, which Customers to fetch.
    */
   where?: Prisma.CustomerWhereInput
@@ -1299,6 +1518,10 @@ export type CustomerCreateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * The data needed to create a Customer.
    */
   data: Prisma.XOR<Prisma.CustomerCreateInput, Prisma.CustomerUncheckedCreateInput>
@@ -1326,6 +1549,10 @@ export type CustomerUpdateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Customer
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
   /**
    * The data needed to update a Customer.
    */
@@ -1367,6 +1594,10 @@ export type CustomerUpsertArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
+  /**
    * The filter to search for the Customer to update in case it exists.
    */
   where: Prisma.CustomerWhereUniqueInput
@@ -1392,6 +1623,10 @@ export type CustomerDeleteArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Customer
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
   /**
    * Filter which Customer to delete.
    */
@@ -1441,6 +1676,30 @@ export type CustomerAggregateRawArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * Customer.sales
+ */
+export type Customer$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sale
+   */
+  select?: Prisma.SaleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sale
+   */
+  omit?: Prisma.SaleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleInclude<ExtArgs> | null
+  where?: Prisma.SaleWhereInput
+  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
+  cursor?: Prisma.SaleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
+}
+
+/**
  * Customer without action
  */
 export type CustomerDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1452,4 +1711,8 @@ export type CustomerDefaultArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Customer
    */
   omit?: Prisma.CustomerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerInclude<ExtArgs> | null
 }
