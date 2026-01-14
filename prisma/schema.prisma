@@ -58,6 +58,10 @@ model User {
   gender        Gender
   image         String?
   role          Role @default(ATTENDANT)
+
+  resetToken     String?   // Token used for password reset
+  resetTokenExpiry DateTime? // Expiration time of the reset token
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   shops         Shop[]    //Relation to shops managed by the user
@@ -173,23 +177,27 @@ model Product {
   updatedAt     DateTime  @updatedAt
 }
 
-enum PaymentStatus {
+enum SaleType {
   PAID
   CREDIT
+}
+
+enum PaymentMethod {
+  CASH
+  MOBILEMONEY
 }
 
 model Sale {
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
   customerId        String   @db.ObjectId
-  customerName      String
-  orderNumber       String   @unique
+  customerName      String?
+  saleNumber       String   @unique
   customerEmail     String?
-  orderAmount       Int
+  saleAmount       Int
   balanceAmount     Int?     @default(0)
   paidAmount        Int
-  orderType         String?
-  paymentStatus     PaymentStatus @default(PAID)
-  paymentMethod     String?
+  saleType    SaleType @default(PAID)
+  paymentMethod     PaymentMethod @default(CASH)
   transactionCode   String?
 
   //Relationships
@@ -204,11 +212,9 @@ model SaleItems {
   saleId       String  @db.ObjectId
   productId     String  @db.ObjectId
   qty           Int
-  salePrice     Float
+  productPrice     Float
   productName   String
   productImage  String
-  customerName  String
-  customerEmail String?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 

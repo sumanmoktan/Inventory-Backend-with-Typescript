@@ -28,12 +28,12 @@ export type AggregateSaleItems = {
 
 export type SaleItemsAvgAggregateOutputType = {
   qty: number | null
-  salePrice: number | null
+  productPrice: number | null
 }
 
 export type SaleItemsSumAggregateOutputType = {
   qty: number | null
-  salePrice: number | null
+  productPrice: number | null
 }
 
 export type SaleItemsMinAggregateOutputType = {
@@ -41,11 +41,9 @@ export type SaleItemsMinAggregateOutputType = {
   saleId: string | null
   productId: string | null
   qty: number | null
-  salePrice: number | null
+  productPrice: number | null
   productName: string | null
   productImage: string | null
-  customerName: string | null
-  customerEmail: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -55,11 +53,9 @@ export type SaleItemsMaxAggregateOutputType = {
   saleId: string | null
   productId: string | null
   qty: number | null
-  salePrice: number | null
+  productPrice: number | null
   productName: string | null
   productImage: string | null
-  customerName: string | null
-  customerEmail: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -69,11 +65,9 @@ export type SaleItemsCountAggregateOutputType = {
   saleId: number
   productId: number
   qty: number
-  salePrice: number
+  productPrice: number
   productName: number
   productImage: number
-  customerName: number
-  customerEmail: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -82,12 +76,12 @@ export type SaleItemsCountAggregateOutputType = {
 
 export type SaleItemsAvgAggregateInputType = {
   qty?: true
-  salePrice?: true
+  productPrice?: true
 }
 
 export type SaleItemsSumAggregateInputType = {
   qty?: true
-  salePrice?: true
+  productPrice?: true
 }
 
 export type SaleItemsMinAggregateInputType = {
@@ -95,11 +89,9 @@ export type SaleItemsMinAggregateInputType = {
   saleId?: true
   productId?: true
   qty?: true
-  salePrice?: true
+  productPrice?: true
   productName?: true
   productImage?: true
-  customerName?: true
-  customerEmail?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -109,11 +101,9 @@ export type SaleItemsMaxAggregateInputType = {
   saleId?: true
   productId?: true
   qty?: true
-  salePrice?: true
+  productPrice?: true
   productName?: true
   productImage?: true
-  customerName?: true
-  customerEmail?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -123,11 +113,9 @@ export type SaleItemsCountAggregateInputType = {
   saleId?: true
   productId?: true
   qty?: true
-  salePrice?: true
+  productPrice?: true
   productName?: true
   productImage?: true
-  customerName?: true
-  customerEmail?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -224,11 +212,9 @@ export type SaleItemsGroupByOutputType = {
   saleId: string
   productId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail: string | null
   createdAt: Date
   updatedAt: Date
   _count: SaleItemsCountAggregateOutputType | null
@@ -261,11 +247,9 @@ export type SaleItemsWhereInput = {
   saleId?: Prisma.StringFilter<"SaleItems"> | string
   productId?: Prisma.StringFilter<"SaleItems"> | string
   qty?: Prisma.IntFilter<"SaleItems"> | number
-  salePrice?: Prisma.FloatFilter<"SaleItems"> | number
+  productPrice?: Prisma.FloatFilter<"SaleItems"> | number
   productName?: Prisma.StringFilter<"SaleItems"> | string
   productImage?: Prisma.StringFilter<"SaleItems"> | string
-  customerName?: Prisma.StringFilter<"SaleItems"> | string
-  customerEmail?: Prisma.StringNullableFilter<"SaleItems"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
@@ -277,11 +261,9 @@ export type SaleItemsOrderByWithRelationInput = {
   saleId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
   productName?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
-  customerName?: Prisma.SortOrder
-  customerEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   product?: Prisma.ProductOrderByWithRelationInput
@@ -296,11 +278,9 @@ export type SaleItemsWhereUniqueInput = Prisma.AtLeast<{
   saleId?: Prisma.StringFilter<"SaleItems"> | string
   productId?: Prisma.StringFilter<"SaleItems"> | string
   qty?: Prisma.IntFilter<"SaleItems"> | number
-  salePrice?: Prisma.FloatFilter<"SaleItems"> | number
+  productPrice?: Prisma.FloatFilter<"SaleItems"> | number
   productName?: Prisma.StringFilter<"SaleItems"> | string
   productImage?: Prisma.StringFilter<"SaleItems"> | string
-  customerName?: Prisma.StringFilter<"SaleItems"> | string
-  customerEmail?: Prisma.StringNullableFilter<"SaleItems"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
@@ -312,11 +292,9 @@ export type SaleItemsOrderByWithAggregationInput = {
   saleId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
   productName?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
-  customerName?: Prisma.SortOrder
-  customerEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SaleItemsCountOrderByAggregateInput
@@ -334,11 +312,9 @@ export type SaleItemsScalarWhereWithAggregatesInput = {
   saleId?: Prisma.StringWithAggregatesFilter<"SaleItems"> | string
   productId?: Prisma.StringWithAggregatesFilter<"SaleItems"> | string
   qty?: Prisma.IntWithAggregatesFilter<"SaleItems"> | number
-  salePrice?: Prisma.FloatWithAggregatesFilter<"SaleItems"> | number
+  productPrice?: Prisma.FloatWithAggregatesFilter<"SaleItems"> | number
   productName?: Prisma.StringWithAggregatesFilter<"SaleItems"> | string
   productImage?: Prisma.StringWithAggregatesFilter<"SaleItems"> | string
-  customerName?: Prisma.StringWithAggregatesFilter<"SaleItems"> | string
-  customerEmail?: Prisma.StringNullableWithAggregatesFilter<"SaleItems"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SaleItems"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SaleItems"> | Date | string
 }
@@ -346,11 +322,9 @@ export type SaleItemsScalarWhereWithAggregatesInput = {
 export type SaleItemsCreateInput = {
   id?: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutSaleItemsInput
@@ -362,22 +336,18 @@ export type SaleItemsUncheckedCreateInput = {
   saleId: string
   productId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SaleItemsUpdateInput = {
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutSaleItemsNestedInput
@@ -388,11 +358,9 @@ export type SaleItemsUncheckedUpdateInput = {
   saleId?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -402,22 +370,18 @@ export type SaleItemsCreateManyInput = {
   saleId: string
   productId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SaleItemsUpdateManyMutationInput = {
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -426,11 +390,9 @@ export type SaleItemsUncheckedUpdateManyInput = {
   saleId?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -450,18 +412,16 @@ export type SaleItemsCountOrderByAggregateInput = {
   saleId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
   productName?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
-  customerName?: Prisma.SortOrder
-  customerEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SaleItemsAvgOrderByAggregateInput = {
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
 }
 
 export type SaleItemsMaxOrderByAggregateInput = {
@@ -469,11 +429,9 @@ export type SaleItemsMaxOrderByAggregateInput = {
   saleId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
   productName?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
-  customerName?: Prisma.SortOrder
-  customerEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -483,18 +441,16 @@ export type SaleItemsMinOrderByAggregateInput = {
   saleId?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
   productName?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
-  customerName?: Prisma.SortOrder
-  customerEmail?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SaleItemsSumOrderByAggregateInput = {
   qty?: Prisma.SortOrder
-  salePrice?: Prisma.SortOrder
+  productPrice?: Prisma.SortOrder
 }
 
 export type SaleItemsCreateNestedManyWithoutProductInput = {
@@ -584,11 +540,9 @@ export type SaleItemsUncheckedUpdateManyWithoutSaleNestedInput = {
 export type SaleItemsCreateWithoutProductInput = {
   id?: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   sale: Prisma.SaleCreateNestedOneWithoutSalesItemsInput
@@ -598,11 +552,9 @@ export type SaleItemsUncheckedCreateWithoutProductInput = {
   id?: string
   saleId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -640,11 +592,9 @@ export type SaleItemsScalarWhereInput = {
   saleId?: Prisma.StringFilter<"SaleItems"> | string
   productId?: Prisma.StringFilter<"SaleItems"> | string
   qty?: Prisma.IntFilter<"SaleItems"> | number
-  salePrice?: Prisma.FloatFilter<"SaleItems"> | number
+  productPrice?: Prisma.FloatFilter<"SaleItems"> | number
   productName?: Prisma.StringFilter<"SaleItems"> | string
   productImage?: Prisma.StringFilter<"SaleItems"> | string
-  customerName?: Prisma.StringFilter<"SaleItems"> | string
-  customerEmail?: Prisma.StringNullableFilter<"SaleItems"> | string | null
   createdAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SaleItems"> | Date | string
 }
@@ -652,11 +602,9 @@ export type SaleItemsScalarWhereInput = {
 export type SaleItemsCreateWithoutSaleInput = {
   id?: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutSaleItemsInput
@@ -666,11 +614,9 @@ export type SaleItemsUncheckedCreateWithoutSaleInput = {
   id?: string
   productId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -704,22 +650,18 @@ export type SaleItemsCreateManyProductInput = {
   id?: string
   saleId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SaleItemsUpdateWithoutProductInput = {
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   sale?: Prisma.SaleUpdateOneRequiredWithoutSalesItemsNestedInput
@@ -728,11 +670,9 @@ export type SaleItemsUpdateWithoutProductInput = {
 export type SaleItemsUncheckedUpdateWithoutProductInput = {
   saleId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -740,11 +680,9 @@ export type SaleItemsUncheckedUpdateWithoutProductInput = {
 export type SaleItemsUncheckedUpdateManyWithoutProductInput = {
   saleId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -753,22 +691,18 @@ export type SaleItemsCreateManySaleInput = {
   id?: string
   productId: string
   qty: number
-  salePrice: number
+  productPrice: number
   productName: string
   productImage: string
-  customerName: string
-  customerEmail?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SaleItemsUpdateWithoutSaleInput = {
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutSaleItemsNestedInput
@@ -777,11 +711,9 @@ export type SaleItemsUpdateWithoutSaleInput = {
 export type SaleItemsUncheckedUpdateWithoutSaleInput = {
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -789,11 +721,9 @@ export type SaleItemsUncheckedUpdateWithoutSaleInput = {
 export type SaleItemsUncheckedUpdateManyWithoutSaleInput = {
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   qty?: Prisma.IntFieldUpdateOperationsInput | number
-  salePrice?: Prisma.FloatFieldUpdateOperationsInput | number
+  productPrice?: Prisma.FloatFieldUpdateOperationsInput | number
   productName?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.StringFieldUpdateOperationsInput | string
-  customerName?: Prisma.StringFieldUpdateOperationsInput | string
-  customerEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -805,11 +735,9 @@ export type SaleItemsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   saleId?: boolean
   productId?: boolean
   qty?: boolean
-  salePrice?: boolean
+  productPrice?: boolean
   productName?: boolean
   productImage?: boolean
-  customerName?: boolean
-  customerEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
@@ -823,16 +751,14 @@ export type SaleItemsSelectScalar = {
   saleId?: boolean
   productId?: boolean
   qty?: boolean
-  salePrice?: boolean
+  productPrice?: boolean
   productName?: boolean
   productImage?: boolean
-  customerName?: boolean
-  customerEmail?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SaleItemsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "saleId" | "productId" | "qty" | "salePrice" | "productName" | "productImage" | "customerName" | "customerEmail" | "createdAt" | "updatedAt", ExtArgs["result"]["saleItems"]>
+export type SaleItemsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "saleId" | "productId" | "qty" | "productPrice" | "productName" | "productImage" | "createdAt" | "updatedAt", ExtArgs["result"]["saleItems"]>
 export type SaleItemsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   sale?: boolean | Prisma.SaleDefaultArgs<ExtArgs>
@@ -849,11 +775,9 @@ export type $SaleItemsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     saleId: string
     productId: string
     qty: number
-    salePrice: number
+    productPrice: number
     productName: string
     productImage: string
-    customerName: string
-    customerEmail: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["saleItems"]>
@@ -1254,11 +1178,9 @@ export interface SaleItemsFieldRefs {
   readonly saleId: Prisma.FieldRef<"SaleItems", 'String'>
   readonly productId: Prisma.FieldRef<"SaleItems", 'String'>
   readonly qty: Prisma.FieldRef<"SaleItems", 'Int'>
-  readonly salePrice: Prisma.FieldRef<"SaleItems", 'Float'>
+  readonly productPrice: Prisma.FieldRef<"SaleItems", 'Float'>
   readonly productName: Prisma.FieldRef<"SaleItems", 'String'>
   readonly productImage: Prisma.FieldRef<"SaleItems", 'String'>
-  readonly customerName: Prisma.FieldRef<"SaleItems", 'String'>
-  readonly customerEmail: Prisma.FieldRef<"SaleItems", 'String'>
   readonly createdAt: Prisma.FieldRef<"SaleItems", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SaleItems", 'DateTime'>
 }

@@ -13,6 +13,7 @@ import unitRouter from './routers/unitRouter';
 import brandRouter from './routers/brandRouter';
 import categoryRouter from './routers/categoryRouter';
 import productRouter from './routers/productRouter';
+import salesRouter from './routers/salesRouter';
 
 
 const app = express(); // Create an Express application instance
@@ -35,6 +36,7 @@ app.use('/api/v1/unit', unitRouter);
 app.use('/api/v1/brand', brandRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/product", productRouter);
+app.use("/api/v1/sale", salesRouter);
 
 app.listen(PORT, () => {
   // Start the server and listen on the specified port

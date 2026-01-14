@@ -46,9 +46,17 @@ export const SupplierType = {
 export type SupplierType = (typeof SupplierType)[keyof typeof SupplierType]
 
 
-export const PaymentStatus = {
+export const SaleType = {
   PAID: 'PAID',
   CREDIT: 'CREDIT'
 } as const
 
-export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+export type SaleType = (typeof SaleType)[keyof typeof SaleType]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  MOBILEMONEY: 'MOBILEMONEY'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]

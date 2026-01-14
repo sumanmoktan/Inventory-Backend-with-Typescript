@@ -102,6 +102,8 @@ export const UserScalarFieldEnum = {
   gender: 'gender',
   image: 'image',
   role: 'role',
+  resetToken: 'resetToken',
+  resetTokenExpiry: 'resetTokenExpiry',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -215,13 +217,12 @@ export const SaleScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
   customerName: 'customerName',
-  orderNumber: 'orderNumber',
+  saleNumber: 'saleNumber',
   customerEmail: 'customerEmail',
-  orderAmount: 'orderAmount',
+  saleAmount: 'saleAmount',
   balanceAmount: 'balanceAmount',
   paidAmount: 'paidAmount',
-  orderType: 'orderType',
-  paymentStatus: 'paymentStatus',
+  saleType: 'saleType',
   paymentMethod: 'paymentMethod',
   transactionCode: 'transactionCode',
   createdAt: 'createdAt',
@@ -236,11 +237,9 @@ export const SaleItemsScalarFieldEnum = {
   saleId: 'saleId',
   productId: 'productId',
   qty: 'qty',
-  salePrice: 'salePrice',
+  productPrice: 'productPrice',
   productName: 'productName',
   productImage: 'productImage',
-  customerName: 'customerName',
-  customerEmail: 'customerEmail',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
