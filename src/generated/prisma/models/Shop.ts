@@ -204,6 +204,7 @@ export type ShopWhereInput = {
   attendantIds?: Prisma.StringNullableListFilter<"Shop">
   products?: Prisma.ProductListRelationFilter
   admin?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  sales?: Prisma.SaleListRelationFilter
 }
 
 export type ShopOrderByWithRelationInput = {
@@ -217,6 +218,7 @@ export type ShopOrderByWithRelationInput = {
   attendantIds?: Prisma.SortOrder
   products?: Prisma.ProductOrderByRelationAggregateInput
   admin?: Prisma.UserOrderByWithRelationInput
+  sales?: Prisma.SaleOrderByRelationAggregateInput
 }
 
 export type ShopWhereUniqueInput = Prisma.AtLeast<{
@@ -233,6 +235,7 @@ export type ShopWhereUniqueInput = Prisma.AtLeast<{
   attendantIds?: Prisma.StringNullableListFilter<"Shop">
   products?: Prisma.ProductListRelationFilter
   admin?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  sales?: Prisma.SaleListRelationFilter
 }, "id" | "slug">
 
 export type ShopOrderByWithAggregationInput = {
@@ -273,6 +276,7 @@ export type ShopCreateInput = {
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
   products?: Prisma.ProductCreateNestedManyWithoutShopInput
   admin: Prisma.UserCreateNestedOneWithoutShopsInput
+  sales?: Prisma.SaleCreateNestedManyWithoutShopInput
 }
 
 export type ShopUncheckedCreateInput = {
@@ -285,6 +289,7 @@ export type ShopUncheckedCreateInput = {
   adminId: string
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutShopInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutShopInput
 }
 
 export type ShopUpdateInput = {
@@ -296,6 +301,7 @@ export type ShopUpdateInput = {
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
   products?: Prisma.ProductUpdateManyWithoutShopNestedInput
   admin?: Prisma.UserUpdateOneRequiredWithoutShopsNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutShopNestedInput
 }
 
 export type ShopUncheckedUpdateInput = {
@@ -307,6 +313,7 @@ export type ShopUncheckedUpdateInput = {
   adminId?: Prisma.StringFieldUpdateOperationsInput | string
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
   products?: Prisma.ProductUncheckedUpdateManyWithoutShopNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutShopNestedInput
 }
 
 export type ShopCreateManyInput = {
@@ -458,6 +465,20 @@ export type ShopUpdateOneRequiredWithoutProductsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ShopUpdateToOneWithWhereWithoutProductsInput, Prisma.ShopUpdateWithoutProductsInput>, Prisma.ShopUncheckedUpdateWithoutProductsInput>
 }
 
+export type ShopCreateNestedOneWithoutSalesInput = {
+  create?: Prisma.XOR<Prisma.ShopCreateWithoutSalesInput, Prisma.ShopUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.ShopCreateOrConnectWithoutSalesInput
+  connect?: Prisma.ShopWhereUniqueInput
+}
+
+export type ShopUpdateOneRequiredWithoutSalesNestedInput = {
+  create?: Prisma.XOR<Prisma.ShopCreateWithoutSalesInput, Prisma.ShopUncheckedCreateWithoutSalesInput>
+  connectOrCreate?: Prisma.ShopCreateOrConnectWithoutSalesInput
+  upsert?: Prisma.ShopUpsertWithoutSalesInput
+  connect?: Prisma.ShopWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ShopUpdateToOneWithWhereWithoutSalesInput, Prisma.ShopUpdateWithoutSalesInput>, Prisma.ShopUncheckedUpdateWithoutSalesInput>
+}
+
 export type ShopCreateWithoutAdminInput = {
   id?: string
   name: string
@@ -467,6 +488,7 @@ export type ShopCreateWithoutAdminInput = {
   updatedAt?: Date | string
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
   products?: Prisma.ProductCreateNestedManyWithoutShopInput
+  sales?: Prisma.SaleCreateNestedManyWithoutShopInput
 }
 
 export type ShopUncheckedCreateWithoutAdminInput = {
@@ -478,6 +500,7 @@ export type ShopUncheckedCreateWithoutAdminInput = {
   updatedAt?: Date | string
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
   products?: Prisma.ProductUncheckedCreateNestedManyWithoutShopInput
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutShopInput
 }
 
 export type ShopCreateOrConnectWithoutAdminInput = {
@@ -528,6 +551,7 @@ export type ShopCreateWithoutProductsInput = {
   updatedAt?: Date | string
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
   admin: Prisma.UserCreateNestedOneWithoutShopsInput
+  sales?: Prisma.SaleCreateNestedManyWithoutShopInput
 }
 
 export type ShopUncheckedCreateWithoutProductsInput = {
@@ -539,6 +563,7 @@ export type ShopUncheckedCreateWithoutProductsInput = {
   updatedAt?: Date | string
   adminId: string
   attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
+  sales?: Prisma.SaleUncheckedCreateNestedManyWithoutShopInput
 }
 
 export type ShopCreateOrConnectWithoutProductsInput = {
@@ -565,6 +590,7 @@ export type ShopUpdateWithoutProductsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
   admin?: Prisma.UserUpdateOneRequiredWithoutShopsNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutShopNestedInput
 }
 
 export type ShopUncheckedUpdateWithoutProductsInput = {
@@ -575,6 +601,69 @@ export type ShopUncheckedUpdateWithoutProductsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   adminId?: Prisma.StringFieldUpdateOperationsInput | string
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutShopNestedInput
+}
+
+export type ShopCreateWithoutSalesInput = {
+  id?: string
+  name: string
+  slug: string
+  location: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
+  products?: Prisma.ProductCreateNestedManyWithoutShopInput
+  admin: Prisma.UserCreateNestedOneWithoutShopsInput
+}
+
+export type ShopUncheckedCreateWithoutSalesInput = {
+  id?: string
+  name: string
+  slug: string
+  location: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminId: string
+  attendantIds?: Prisma.ShopCreateattendantIdsInput | string[]
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutShopInput
+}
+
+export type ShopCreateOrConnectWithoutSalesInput = {
+  where: Prisma.ShopWhereUniqueInput
+  create: Prisma.XOR<Prisma.ShopCreateWithoutSalesInput, Prisma.ShopUncheckedCreateWithoutSalesInput>
+}
+
+export type ShopUpsertWithoutSalesInput = {
+  update: Prisma.XOR<Prisma.ShopUpdateWithoutSalesInput, Prisma.ShopUncheckedUpdateWithoutSalesInput>
+  create: Prisma.XOR<Prisma.ShopCreateWithoutSalesInput, Prisma.ShopUncheckedCreateWithoutSalesInput>
+  where?: Prisma.ShopWhereInput
+}
+
+export type ShopUpdateToOneWithWhereWithoutSalesInput = {
+  where?: Prisma.ShopWhereInput
+  data: Prisma.XOR<Prisma.ShopUpdateWithoutSalesInput, Prisma.ShopUncheckedUpdateWithoutSalesInput>
+}
+
+export type ShopUpdateWithoutSalesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
+  products?: Prisma.ProductUpdateManyWithoutShopNestedInput
+  admin?: Prisma.UserUpdateOneRequiredWithoutShopsNestedInput
+}
+
+export type ShopUncheckedUpdateWithoutSalesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminId?: Prisma.StringFieldUpdateOperationsInput | string
+  attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
+  products?: Prisma.ProductUncheckedUpdateManyWithoutShopNestedInput
 }
 
 export type ShopCreateManyAdminInput = {
@@ -595,6 +684,7 @@ export type ShopUpdateWithoutAdminInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
   products?: Prisma.ProductUpdateManyWithoutShopNestedInput
+  sales?: Prisma.SaleUpdateManyWithoutShopNestedInput
 }
 
 export type ShopUncheckedUpdateWithoutAdminInput = {
@@ -605,6 +695,7 @@ export type ShopUncheckedUpdateWithoutAdminInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendantIds?: Prisma.ShopUpdateattendantIdsInput | string[]
   products?: Prisma.ProductUncheckedUpdateManyWithoutShopNestedInput
+  sales?: Prisma.SaleUncheckedUpdateManyWithoutShopNestedInput
 }
 
 export type ShopUncheckedUpdateManyWithoutAdminInput = {
@@ -623,10 +714,12 @@ export type ShopUncheckedUpdateManyWithoutAdminInput = {
 
 export type ShopCountOutputType = {
   products: number
+  sales: number
 }
 
 export type ShopCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   products?: boolean | ShopCountOutputTypeCountProductsArgs
+  sales?: boolean | ShopCountOutputTypeCountSalesArgs
 }
 
 /**
@@ -646,6 +739,13 @@ export type ShopCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.ProductWhereInput
 }
 
+/**
+ * ShopCountOutputType without action
+ */
+export type ShopCountOutputTypeCountSalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SaleWhereInput
+}
+
 
 export type ShopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -658,6 +758,7 @@ export type ShopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   attendantIds?: boolean
   products?: boolean | Prisma.Shop$productsArgs<ExtArgs>
   admin?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  sales?: boolean | Prisma.Shop$salesArgs<ExtArgs>
   _count?: boolean | Prisma.ShopCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["shop"]>
 
@@ -678,6 +779,7 @@ export type ShopOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type ShopInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   products?: boolean | Prisma.Shop$productsArgs<ExtArgs>
   admin?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  sales?: boolean | Prisma.Shop$salesArgs<ExtArgs>
   _count?: boolean | Prisma.ShopCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -686,6 +788,7 @@ export type $ShopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     products: Prisma.$ProductPayload<ExtArgs>[]
     admin: Prisma.$UserPayload<ExtArgs>
+    sales: Prisma.$SalePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1061,6 +1164,7 @@ export interface Prisma__ShopClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   products<T extends Prisma.Shop$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Shop$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   admin<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  sales<T extends Prisma.Shop$salesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Shop$salesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1489,6 +1593,30 @@ export type Shop$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
+}
+
+/**
+ * Shop.sales
+ */
+export type Shop$salesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sale
+   */
+  select?: Prisma.SaleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sale
+   */
+  omit?: Prisma.SaleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SaleInclude<ExtArgs> | null
+  where?: Prisma.SaleWhereInput
+  orderBy?: Prisma.SaleOrderByWithRelationInput | Prisma.SaleOrderByWithRelationInput[]
+  cursor?: Prisma.SaleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SaleScalarFieldEnum | Prisma.SaleScalarFieldEnum[]
 }
 
 /**

@@ -22,9 +22,9 @@ model Customer {
   gender        Gender
   country       String
   location      String
-  maxCreditLimit Float
-  maxCreditDays Int
-  unpaidCreditAmount Int? @default(0) 
+  maxCreditLimit Float  //Amount of credit a customer can borrow
+  maxCreditDays Int  //Amount of days customer have to pay the credit
+  unpaidCreditAmount Int @default(0) // outstanding credit
   taxPin        String?
   dob           DateTime?
   email         String?   @unique
@@ -83,6 +83,7 @@ model Shop {
   products      Product[]
   admin         User      @relation(fields: [adminId], references: [id]) //Relation to the admin who manages to shop 
   attendantIds  String[]  @db.ObjectId  //Array of ObjectIds referencing attendants
+  sales      Sale[]
  
 }
 
@@ -199,10 +200,12 @@ model Sale {
   saleType    SaleType @default(PAID)
   paymentMethod     PaymentMethod @default(CASH)
   transactionCode   String?
+  shopId          String    @db.ObjectId
 
   //Relationships
   salesItems        SaleItems[]
   customer          Customer  @relation(fields:[customerId], references:[id]) 
+  shop              Shop      @relation(fields: [shopId], references: [id])
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 }

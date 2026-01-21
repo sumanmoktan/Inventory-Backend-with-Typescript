@@ -270,7 +270,7 @@ export type CustomerGroupByOutputType = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount: number | null
+  unpaidCreditAmount: number
   taxPin: string | null
   dob: Date | null
   email: string | null
@@ -313,7 +313,7 @@ export type CustomerWhereInput = {
   location?: Prisma.StringFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntFilter<"Customer"> | number
-  unpaidCreditAmount?: Prisma.IntNullableFilter<"Customer"> | number | null
+  unpaidCreditAmount?: Prisma.IntFilter<"Customer"> | number
   taxPin?: Prisma.StringNullableFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
   email?: Prisma.StringNullableFilter<"Customer"> | string | null
@@ -360,7 +360,7 @@ export type CustomerWhereUniqueInput = Prisma.AtLeast<{
   location?: Prisma.StringFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntFilter<"Customer"> | number
-  unpaidCreditAmount?: Prisma.IntNullableFilter<"Customer"> | number | null
+  unpaidCreditAmount?: Prisma.IntFilter<"Customer"> | number
   taxPin?: Prisma.StringNullableFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableFilter<"Customer"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Customer"> | Date | string
@@ -407,7 +407,7 @@ export type CustomerScalarWhereWithAggregatesInput = {
   location?: Prisma.StringWithAggregatesFilter<"Customer"> | string
   maxCreditLimit?: Prisma.FloatWithAggregatesFilter<"Customer"> | number
   maxCreditDays?: Prisma.IntWithAggregatesFilter<"Customer"> | number
-  unpaidCreditAmount?: Prisma.IntNullableWithAggregatesFilter<"Customer"> | number | null
+  unpaidCreditAmount?: Prisma.IntWithAggregatesFilter<"Customer"> | number
   taxPin?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
   dob?: Prisma.DateTimeNullableWithAggregatesFilter<"Customer"> | Date | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"Customer"> | string | null
@@ -427,7 +427,7 @@ export type CustomerCreateInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount?: number | null
+  unpaidCreditAmount?: number
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -448,7 +448,7 @@ export type CustomerUncheckedCreateInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount?: number | null
+  unpaidCreditAmount?: number
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -468,7 +468,7 @@ export type CustomerUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -488,7 +488,7 @@ export type CustomerUncheckedUpdateInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -509,7 +509,7 @@ export type CustomerCreateManyInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount?: number | null
+  unpaidCreditAmount?: number
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -528,7 +528,7 @@ export type CustomerUpdateManyMutationInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -547,7 +547,7 @@ export type CustomerUncheckedUpdateManyInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -661,15 +661,6 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-  unset?: boolean
-}
-
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
   unset?: boolean
@@ -709,7 +700,7 @@ export type CustomerCreateWithoutSalesInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount?: number | null
+  unpaidCreditAmount?: number
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -729,7 +720,7 @@ export type CustomerUncheckedCreateWithoutSalesInput = {
   location: string
   maxCreditLimit: number
   maxCreditDays: number
-  unpaidCreditAmount?: number | null
+  unpaidCreditAmount?: number
   taxPin?: string | null
   dob?: Date | string | null
   email?: string | null
@@ -764,7 +755,7 @@ export type CustomerUpdateWithoutSalesInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -783,7 +774,7 @@ export type CustomerUncheckedUpdateWithoutSalesInput = {
   location?: Prisma.StringFieldUpdateOperationsInput | string
   maxCreditLimit?: Prisma.FloatFieldUpdateOperationsInput | number
   maxCreditDays?: Prisma.IntFieldUpdateOperationsInput | number
-  unpaidCreditAmount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  unpaidCreditAmount?: Prisma.IntFieldUpdateOperationsInput | number
   taxPin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dob?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -889,7 +880,7 @@ export type $CustomerPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     location: string
     maxCreditLimit: number
     maxCreditDays: number
-    unpaidCreditAmount: number | null
+    unpaidCreditAmount: number
     taxPin: string | null
     dob: Date | null
     email: string | null

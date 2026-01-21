@@ -225,6 +225,7 @@ export const SaleScalarFieldEnum = {
   saleType: 'saleType',
   paymentMethod: 'paymentMethod',
   transactionCode: 'transactionCode',
+  shopId: 'shopId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

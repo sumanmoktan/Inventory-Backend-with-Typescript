@@ -1,3 +1,4 @@
+import { Shop } from "@/generated/prisma/client";
 import { PaymentMethod, SaleType } from "@/generated/prisma/enums";
 
 export interface SaleRequestBody {
@@ -8,6 +9,7 @@ export interface SaleRequestBody {
   paidAmount: number;
   balanceAmount: number;
   saleType: SaleType;
+  shopId: string,
   paymentMethod: PaymentMethod;
   transactionCode: string;
   salesItems: SaleItem[];
