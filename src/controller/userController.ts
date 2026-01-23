@@ -255,7 +255,7 @@ export async function UpdateUser(req:Request, res:Response){
 
 export async function UpdateUserPassword(req:Request, res:Response){
     const {id} = req.params;
-    const {password} = req.body;
+    const {oldPassword,newPassword} = req.body;
 
     try {
          const userDetail = await db.user.findUnique({
@@ -269,8 +269,15 @@ export async function UpdateUserPassword(req:Request, res:Response){
                 error:'User Not found'
             })
         }
+        //check if the old password matches
+        const passwordMatch = await bcrypt.compare(oldPassword, userDetail.password);
+        if(!passwordMatch){
+            return res.status(403).json({
+                error:"Incorrect old Password"
+            });
+        }
         //hashed user Password
-        const hashPassword:string = await bcrypt.hash(password, 12);
+        const hashPassword:string = await bcrypt.hash(newPassword, 12);
         const updateUser = await db.user.update({
             where:{id},
             data:{

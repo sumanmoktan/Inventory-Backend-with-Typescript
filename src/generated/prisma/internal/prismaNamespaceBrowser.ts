@@ -58,7 +58,10 @@ export const ModelName = {
   Category: 'Category',
   Product: 'Product',
   Sale: 'Sale',
-  SaleItems: 'SaleItems'
+  SaleItems: 'SaleItems',
+  Payee: 'Payee',
+  ExpenseCategory: 'ExpenseCategory',
+  Expense: 'Expense'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -246,6 +249,45 @@ export const SaleItemsScalarFieldEnum = {
 } as const
 
 export type SaleItemsScalarFieldEnum = (typeof SaleItemsScalarFieldEnum)[keyof typeof SaleItemsScalarFieldEnum]
+
+
+export const PayeeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PayeeScalarFieldEnum = (typeof PayeeScalarFieldEnum)[keyof typeof PayeeScalarFieldEnum]
+
+
+export const ExpenseCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExpenseCategoryScalarFieldEnum = (typeof ExpenseCategoryScalarFieldEnum)[keyof typeof ExpenseCategoryScalarFieldEnum]
+
+
+export const ExpenseScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  amount: 'amount',
+  description: 'description',
+  attachments: 'attachments',
+  expenseDate: 'expenseDate',
+  payeeId: 'payeeId',
+  shopId: 'shopId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
 export const SortOrder = {
