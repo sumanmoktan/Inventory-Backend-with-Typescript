@@ -20,7 +20,9 @@ import salesRouter from './routers/salesRouter';
 import expenseCategoryRouter from "./routers/expeseCategoryRouter";
 import payeeRouter from './routers/payeeRouter';
 import expenseRouter from './routers/expenseRouter';
-
+import notificationRouter from './routers/notificationRouter';
+import adjustmentRouter from './routers/adjustmentRouter';
+import purchaseOrderRouter from './routers/purchaseOrderRouter';
 
 const app = express(); // Create an Express application instance
 
@@ -80,6 +82,9 @@ app.use("/api/v1/sale", salesRouter);
 app.use("/api/v1/expenseCategory", expenseCategoryRouter);
 app.use("/api/v1/payee", payeeRouter);
 app.use("/api/v1/expense", expenseRouter);
+app.use("/api/v1/notification", notificationRouter);
+app.use("/api/v1/adjustment", adjustmentRouter);
+app.use("/api/v1/purchaseOrder", purchaseOrderRouter);
 
 
 

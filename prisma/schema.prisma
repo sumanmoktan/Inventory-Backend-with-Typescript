@@ -107,6 +107,7 @@ model Supplier {
   rating            Float?
   notes             String?
   products          Product[]
+  PurchaseOrders    PurchaseOrder[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
@@ -175,6 +176,8 @@ model Product {
   category    Category @relation(fields:[categroyId], references:[id])
   supplier    Supplier  @relation(fields:[supplierId], references:[id])
   saleItems       SaleItems[]
+  purchaseOrderItems  PurchaseOrderItem[]
+  adjustmentItems AdjustmentItem[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
@@ -267,4 +270,82 @@ model Expense {
 
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
+}
+
+enum NotificationStatus {
+  WARNING
+  DANGER
+  INFO
+}
+
+model Notification {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  message       String
+  status        NotificationStatus   @default(WARNING)
+  statusText    String
+  read          Boolean   @default(false)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model Adjustment {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  refNo       String   @default("AAAB")
+  reason      String
+  items       AdjustmentItem[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model AdjustmentItem {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  adjustment        Adjustment  @relation(fields: [adjustmentId], references: [id])
+  adjustmentId      String      @db.ObjectId
+  productId         String      @db.ObjectId
+  product           Product     @relation(fields: [productId], references: [id])
+  quantity          Int
+  type              String
+  currentStock      Int
+  productName       String
+
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+enum PurchaseOrderStatus {
+  PAID
+  PARTIAL
+  UNPAID
+}
+
+model PurchaseOrder {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  supplierId          String    @db.ObjectId
+  supplier            Supplier   @relation(fields: [supplierId], references: [id])
+  status              PurchaseOrderStatus  @default(PAID)
+  discount            Int?
+  notes               String?
+  tax                 Int?
+  refNo               String
+  totalAmount         Int
+  balanceAmount       Int
+  shippingCost        Int?
+  items               PurchaseOrderItem[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model PurchaseOrderItem {
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  PurchaseOrder         PurchaseOrder   @relation(fields: [purchaseOrderId], references:[id])
+  purchaseOrderId       String           @db.ObjectId
+  productId             String            @db.ObjectId
+  product               Product           @relation(fields: [productId], references: [id])
+  quantity              Int
+  productName           String
+  unitCost              Int
+  subTotal              Int
+  currentStock          Int
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
 }

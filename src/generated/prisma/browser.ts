@@ -82,3 +82,28 @@ export type ExpenseCategory = Prisma.ExpenseCategoryModel
  * 
  */
 export type Expense = Prisma.ExpenseModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model Adjustment
+ * 
+ */
+export type Adjustment = Prisma.AdjustmentModel
+/**
+ * Model AdjustmentItem
+ * 
+ */
+export type AdjustmentItem = Prisma.AdjustmentItemModel
+/**
+ * Model PurchaseOrder
+ * 
+ */
+export type PurchaseOrder = Prisma.PurchaseOrderModel
+/**
+ * Model PurchaseOrderItem
+ * 
+ */
+export type PurchaseOrderItem = Prisma.PurchaseOrderItemModel

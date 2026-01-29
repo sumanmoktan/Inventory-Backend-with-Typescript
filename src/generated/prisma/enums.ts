@@ -60,3 +60,21 @@ export const PaymentMethod = {
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const NotificationStatus = {
+  WARNING: 'WARNING',
+  DANGER: 'DANGER',
+  INFO: 'INFO'
+} as const
+
+export type NotificationStatus = (typeof NotificationStatus)[keyof typeof NotificationStatus]
+
+
+export const PurchaseOrderStatus = {
+  PAID: 'PAID',
+  PARTIAL: 'PARTIAL',
+  UNPAID: 'UNPAID'
+} as const
+
+export type PurchaseOrderStatus = (typeof PurchaseOrderStatus)[keyof typeof PurchaseOrderStatus]
